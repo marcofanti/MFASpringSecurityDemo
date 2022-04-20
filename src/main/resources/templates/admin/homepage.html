@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>BehavioSec & Ping Demo</title>
+
+	<style>
+		.report p{
+			padding: 0px;
+			margin: 0px;
+			text-align: center;
+		}
+	</style>
+
+</head>
+<body>
+	<div th:replace="fragments/header"></div>
+	<form th:action="@{/home/message}" method="get">
+		<button class="btn btn-md btn-warning btn-block" name="registration"
+			type="Submit">Test Form Submission</button>
+	</form>
+	<div th:replace="fragments/menu"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h3 th:text="#{message.welcome}"></h3>
+				<p/>
+				<a href="/admin/makeadmin">Make Admin</a>
+				<p/>
+				<a href="/admin/configuration">Configuration</a>
+				<p/>
+				<a href="/admin/secretRegistration">Secret key Registration</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel-group" style="margin-top: 40px">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<span th:utext="${userName}"></span>
+						</div>
+
+						<div class="report" >
+							<p th:utext="${adminMessage}"></p>
+							<ul>
+
+						<li th:utext="${score}"></li>
+						<li th:utext="${risk}"></li>
+						<li th:utext="${pocAnomaly}"></li>
+						<li th:utext="${deviceChange}"></li>
+						<li th:utext="${ipChange}"></li>
+						<li th:utext="${bot}"></li>
+						<li th:utext="${replay}"></li>
+						<li th:utext="${remoteAccess}"></li>
+						<li th:utext="${isTrained}"></li>
+							</ul>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<form th:action="@{/logout}" method="get">
+		<button class="btn btn-md btn-danger btn-block" name="registration"
+			type="Submit">Logout</button>
+	</form>
+</body>
+</html>

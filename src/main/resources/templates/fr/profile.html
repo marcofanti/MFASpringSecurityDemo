@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Registration Form</title>
+</head>
+<body>
+	<div th:replace="fragments/header"></div>
+	<form th:action="@{/fr/homepage}" method="get">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Home</button>
+	</form>
+	<div th:replace="fragments/menu"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form autocomplete="off" action="#" th:action="@{/fr/profile}"
+					th:object="${user}" method="post" class="form-horizontal"
+					role="form">
+					<h2>Registration Form</h2>
+					<div class="form-group">
+						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+							class="validation-message"></label> <input type="text"
+							th:field="*{name}" placeholder="First Name" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label th:if="${#fields.hasErrors('lastName')}"
+							th:errors="*{lastName}" class="validation-message"></label> <input
+							type="text" th:field="*{lastName}" placeholder="Last Name"
+							class="form-control" />
+					</div>
+					<input
+							type="hidden" th:field="*{username}" placeholder="Username"
+							class="form-control" />
+					<div class="form-group">
+						<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+							class="validation-message"></label> <input type="text"
+							th:field="*{email}" placeholder="Email" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+							class="validation-message"></label> <input type="text"
+							th:field="*{phone}" placeholder="Phone" class="form-control" />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-block">Submit</button>
+					</div>
+					<input type="hidden" th:field="*{other}" class="hidden-primary" />
+					<br />
+					<script src="/js/collector.min.js"></script>
+				</form>
+			</div>
+		</div>
+	</div>
+	</span>
+	<form action="/fr/logout" method="get">
+		<button class="btn btn-md btn-danger btn-block" type="Submit">Logout</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>BehavioSec Login</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<form th:action="@{/registration}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To BehavioSec Registration Page</button>
+</form>
+<div th:replace="fragments/menu"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+                 <h2>Welcome</h2>
+        </div>
+    </div>
+</div>
+
+
+
+	<div class="container">
+     <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+     <form th:action="@{/login}" method="POST" class="form-horizontal">
+        <br/>
+
+        <input type="text" id="username" name="username" th:placeholder="Username"
+               class="form-control"/> <br/>
+        <input type="password" th:placeholder="Password"
+               id="password" name="password" class="form-control"/> <br/>
+
+        <div align="center" th:if="${param.error}">
+            <p style="font-size: 20; color: #FF1C19;">Username or Password invalid, please verify</p>
+        </div>
+        <div align="center">
+        	<h3 class="form-signin-heading" th:text="${message}"></h3>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"
+                th:text="Login"></button>
+       			<input type="hidden" id="other" name="other" class="hidden-primary"/> <br/>
+        <script src="/js/collector.min.js"></script>
+    </form>
+            </div>
+    </div>
+    
+</div>
+</body>
+</html>

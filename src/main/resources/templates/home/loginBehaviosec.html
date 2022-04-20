@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Enhanced Authentication</title>
+</head>
+<body>
+	<div th:replace="fragments/header"></div>
+	<form th:action="@{/logout}" method="get" width="300" height="300"
+		action="">
+		<button class="btn btn-md btn-danger btn-block" name="registration"
+			type="Submit">Logout</button>
+	</form>
+	<div th:replace="fragments/menu"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h2>Welcome</h2>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel-group" style="margin-top: 40px">
+					<form th:action="@{/home/loginOTP}" th:object="${OTPModel}"
+						method="POST" class="form-signin" action="">
+						<h3 class="form-signin-heading" th:text="${message}"></h3>
+						<h3 class="form-signin-heading" th:text="${message2}"></h3>
+						<h3 class="form-signin-heading" th:text="${message3}"></h3>
+						<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" 
+							class="validation-message">
+						</label> 
+						<input type="text" th:placeholder="#{label.form.loginEmail}" th:field="*{email}" class="form-control" /> <br />
+						<div align="center" th:if="${param.error}"> <p style="font-size: 20; color: #FF1C19;">Email invalid, please verify</p></div>
+						<button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Confirm"></button>
+						<input type="hidden" id="other" name="other" class="hidden-primary" /> 
+						<input type="hidden" id="otpValue" name="otpValue" value="123456" class="hidden-primary" /> 
+						<input type="hidden" th:field="*{type}" class="hidden-primary" /> <br />
+						<script src="/js/collector.min.js"></script>
+					</form>
+					<span th:if="${adminMessage != null}">				
+					<br/> <br />
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<span th:utext="${userName}"></span>
+						</div>
+						<div class="report">
+							<p th:utext="${adminMessage}"></p>
+							<ul>
+								<li th:utext="${score}"></li>
+								<li th:utext="${risk}"></li>
+								<li th:utext="${pocAnomaly}"></li>
+								<li th:utext="${deviceChange}"></li>
+								<li th:utext="${ipChange}"></li>
+								<li th:utext="${bot}"></li>
+								<li th:utext="${replay}"></li>
+								<li th:utext="${remoteAccess}"></li>
+								<li th:utext="${isTrained}"></li>
+							</ul>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</body>
+</html>

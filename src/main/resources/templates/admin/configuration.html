@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Registration Form</title>
+</head>
+<body>
+	<div th:replace="fragments/header"></div>
+	<form th:action="@{/home/homepage}" method="get">
+		<button class="btn btn-md btn-warning btn-block" name="registration"
+			type="Submit">Home</button>
+	</form>	
+	<div th:replace="fragments/menu"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form autocomplete="off" action="#" th:action="@{/admin/configuration}" th:object="${configurationList}" method="post" class="form-horizontal" role="form">
+					<h2>Configuration</h2>
+					
+					<div class="form-group">
+					<label th:text="#{label.configuration.minimumloginscore}"></label>	
+						<label th:if="${#fields.hasErrors('minimumLoginScore')}" th:errors="*{minimumLoginScore}" 
+							class="validation-message">
+						</label> 
+						<input type="text" th:field="*{minimumLoginScore}" maxlength="4" size="4"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+					<label th:text="#{label.configuration.maximumloginrisk}"></label>	
+						<label th:if="${#fields.hasErrors('maximumLoginRisk')}" th:errors="*{maximumLoginRisk}" 
+							class="validation-message">
+						</label> 
+						<input type="text" th:field="*{maximumLoginRisk}" maxlength="4" size="4"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+					<label th:text="#{label.configuration.minimumstepupscore}"></label>	
+						<label th:if="${#fields.hasErrors('minimumStepUpScore')}" th:errors="*{minimumStepUpScore}" 
+							class="validation-message">
+						</label> 
+						<input type="text" th:field="*{minimumStepUpScore}" maxlength="4" size="4"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+					<label th:text="#{label.configuration.maximumstepuprisk}"></label>	
+						<label th:if="${#fields.hasErrors('maximumStepUpRisk')}" th:errors="*{maximumStepUpRisk}" 
+							class="validation-message">
+						</label> 
+						<input type="text" th:field="*{maximumStepUpRisk}" maxlength="4" size="4"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+					<label th:text="#{label.configuration.minimumformscore}"></label>	
+						<label th:if="${#fields.hasErrors('minimumFormScore')}" th:errors="*{minimumFormScore}" 
+							class="validation-message">
+						</label> 
+						<input type="text" th:field="*{minimumFormScore}" maxlength="4" size="4"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+					<label th:text="#{label.configuration.maximumformrisk}"></label>	
+						<label th:if="${#fields.hasErrors('maximumFormRisk')}" th:errors="*{maximumFormRisk}" 
+							class="validation-message">
+						</label>  
+						<input type="text" th:field="*{maximumFormRisk}" maxlength="4" size="4"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+				  	<label th:text="#{label.configuration.minimumssoscore}"></label>	
+						<label th:if="${#fields.hasErrors('minimumSSOScore')}" th:errors="*{minimumSSOScore}" 
+							class="validation-message">
+						</label> 
+						<input type="text" th:field="*{minimumSSOScore}" maxlength="4" size="4"
+							class="form-control" /> 
+					</div>
+					<div class="form-group">
+					<label th:text="#{label.configuration.maximumssorisk}"></label>	
+					<label th:if="${#fields.hasErrors('maximumSSORisk')}" th:errors="*{maximumSSORisk}" 
+							class="validation-message">
+						</label> 
+						<input type="text" th:field="*{maximumSSORisk}" maxlength="4" size="4"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-block">Submit configuration</button>
+					</div>
+					<br />
+					<script src="/js/collector.min.js"></script>
+				</form>
+			</div>
+		</div>
+	</div>
+	<form th:action="@{/logout}" method="get">
+		<button class="btn btn-md btn-danger btn-block" name="registration"
+			type="Submit">Logout</button>
+	</form>
+</body>
+</html>
